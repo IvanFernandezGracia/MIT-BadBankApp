@@ -1,0 +1,57 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+tags:
+  - name: csfr
+    description: Proteccion contra ataques CSRF
+paths:
+  /api/csfr/getCSRFToken:
+    get:
+      summary: Crear y enviar token CSRF.
+      tags:
+        - csfr
+      description: Crea un nuevo token para que el frontend lo envie en el body de la request.
+      responses:
+        "200":
+          description: OK.
+          headers:
+            Set-Cookie:
+              description: _csrf-my-app
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  csrfToken:
+                    type: string
+                    example: W3xVyuvF-Q95eGbSCZ3_43ko3akFfkGXLz4A
+        "500":
+          description: Server Error
+  /api/csfr/deleteCSRFToken:
+    get:
+      summary: borrar token CSRF.
+      tags:
+        - csfr
+      description: Borrar token del navegador
+      responses:
+        "200":
+          description: OK.
+          headers:
+            ClearCookie:
+              description: _csrf-my-app
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success Loggedout
+        "500":
+          description: Server Error

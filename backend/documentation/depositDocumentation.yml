@@ -1,0 +1,66 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+tags:
+  - name: Deposit
+    description: Depositar Dinero al banco
+paths:
+  /api/deposit/:
+    post:
+      summary: Depositar dinero.
+      tags:
+        - Deposit
+      description: Inicio de sesion simple.
+      parameters:
+        - name: token_access
+          in: header
+          required: true
+          description: Token Access JWT
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        - name: token_refresh
+          in: cookie
+          required: true
+          description: Token Refresh JWT
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        - name: _csrf-my-app
+          in: cookie
+          required: true
+          description: Token CSRF
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                amount:
+                  type: number
+                  example: 10500
+                _csrf:
+                  type: string
+                  example: W3xVyuvF-Q95eGbSCZ3_43ko3akFfkGXLz4A
+      responses:
+        "201":
+          description: Deposito realizado con exito.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  deposit:
+                    type: number
+                    example: 10500
+                  balance:
+                    type: number
+                    example: 258000000
+        "500":
+          description: Server Error

@@ -1,0 +1,92 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+tags:
+  - name: User
+    description: Datos de los usuarios
+paths:
+  /api/users/:term:
+    get:
+      summary: obtener usuarios con sus datos.
+      tags:
+        - User
+      description: Buscar los datos del usuario para funcionalidad Search
+      parameters:
+        - name: term
+          in: path
+          required: true
+          description: texto introducido en el buscador
+          schema:
+            type: string
+            example: Chayan
+        - name: token_access
+          in: header
+          required: true
+          description: Token Access JWT
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        - name: token_refresh
+          in: cookie
+          required: true
+          description: Token Refresh JWT
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        - name: _csrf-my-app
+          in: cookie
+          required: true
+          description: Token CSRF
+          schema:
+            type: string
+            example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                _csrf:
+                  type: string
+                  example: W3xVyuvF-Q95eGbSCZ3_43ko3akFfkGXLz4A
+      responses:
+        "200":
+          description: OK.
+          headers:
+            Set-Cookie:
+              description: _csrf-my-app
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    example:
+                      [
+                        {
+                          chayanne de las bermudas,
+                          chayyaneTorero@gmail.com,
+                          http://iamge5s.com,
+                          14000,
+                        },
+                        {
+                          chayatetus,
+                          tetus@gmail.com,
+                          http://iamg1es.com,
+                          14000,
+                        },
+                        {
+                          messi,
+                          chayanneteamo@gmail.com,
+                          http://iamge2s.com,
+                          14000,
+                        },
+                      ]
+        "500":
+          description: Server Error

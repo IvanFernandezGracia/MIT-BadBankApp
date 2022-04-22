@@ -1,0 +1,243 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+tags:
+  - name: Auth
+    description: Autentificacion y autorizacion
+paths:
+  /api/auth/login:
+    post:
+      summary: Iniciar sesion con correo y contraseña.
+      tags:
+        - Auth
+      description: Inicio de sesion simple.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: OK.
+          headers:
+            Set-Cookie:
+              description: token_refresh
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Ivan
+                      email:
+                        type: string
+                        example: ivan.fernandez.g@usach.cl
+                      url_image:
+                        type: string
+                        example: https://www.google.com/imgres?imgurl=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1313547461512880128%2FXpnRuLqK_400x400.jpg&imgrefurl=https%3A%2F%2Fmobile.twitter.com%2Fgooglechile&tbnid=Il7mm8q9AFYPLM&vet=12ahUKEwjbp9eerqf3AhVBiJUCHfKhCsoQMygBegUIARDaAQ..i&docid=OT1UbpaiOWXDlM&w=400&h=400&q=google&ved=2ahUKEwjbp9eerqf3AhVBiJUCHfKhCsoQMygBegUIARDaAQ
+                  stateAccount:
+                    type: object
+                    properties:
+                      active:
+                        type: boolean
+                        example: "true"
+                      balance:
+                        type: string
+                        example: "105000"
+                      user:
+                        type: string
+                        example: 507f1f77bcf86cd799439011;
+                  token_access:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        "500":
+          description: Server Error
+  /api/auth/createAccount:
+    post:
+      summary: Crear usuario.
+      tags:
+        - Auth
+      description: Inicio de sesion simple.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        "200":
+          description: OK.
+          headers:
+            Set-Cookie:
+              description: token_refresh
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Ivan
+                      email:
+                        type: string
+                        example: ivan.fernandez.g@usach.cl
+                      url_image:
+                        type: string
+                        example: https://www.google.com/imgres?imgurl=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1313547461512880128%2FXpnRuLqK_400x400.jpg&imgrefurl=https%3A%2F%2Fmobile.twitter.com%2Fgooglechile&tbnid=Il7mm8q9AFYPLM&vet=12ahUKEwjbp9eerqf3AhVBiJUCHfKhCsoQMygBegUIARDaAQ..i&docid=OT1UbpaiOWXDlM&w=400&h=400&q=google&ved=2ahUKEwjbp9eerqf3AhVBiJUCHfKhCsoQMygBegUIARDaAQ
+                  stateAccount:
+                    type: object
+                    properties:
+                      active:
+                        type: boolean
+                        example: "true"
+                      balance:
+                        type: string
+                        example: "105000"
+                      user:
+                        type: string
+                        example: 507f1f77bcf86cd799439011;
+                  token_access:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        "500":
+          description: Server Error
+  /api/auth/google:
+    post:
+      summary: Iniciar sesion con token google oauth2.
+      tags:
+        - Auth
+      description: Inicio de sesion simple.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id_token:
+                  type: string
+                  example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+      responses:
+        "200":
+          description: OK.
+          headers:
+            Set-Cookie:
+              description: token_refresh
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: Ivan
+                      email:
+                        type: string
+                        example: ivan.fernandez.g@usach.cl
+                      url_image:
+                        type: string
+                        example: https://www.google.com/imgres?imgurl=https%3A%2F%2Fpbs.twimg.com%2Fprofile_images%2F1313547461512880128%2FXpnRuLqK_400x400.jpg&imgrefurl=https%3A%2F%2Fmobile.twitter.com%2Fgooglechile&tbnid=Il7mm8q9AFYPLM&vet=12ahUKEwjbp9eerqf3AhVBiJUCHfKhCsoQMygBegUIARDaAQ..i&docid=OT1UbpaiOWXDlM&w=400&h=400&q=google&ved=2ahUKEwjbp9eerqf3AhVBiJUCHfKhCsoQMygBegUIARDaAQ
+                  stateAccount:
+                    type: object
+                    properties:
+                      active:
+                        type: boolean
+                        example: "true"
+                      balance:
+                        type: string
+                        example: "105000"
+                      user:
+                        type: string
+                        example: 507f1f77bcf86cd799439011;
+                  token_access:
+                    type: string
+                    example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
+        "500":
+          description: Server Error
+  /api/auth/logout:
+    get:
+      summary: Cerrar Sesion.
+      tags:
+        - Auth
+      description: Elimina token refresh y csrf de navegador.
+      responses:
+        "200":
+          description: OK.
+          headers:
+            clearCookie-1:
+              description: token_refresh
+              schema:
+                type: string
+            clearCookie-2:
+              description: _csrf-my-app
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Success Loggedout
+        "500":
+          description: Server Error
+  /api/auth/renewTokens:
+    post:
+      summary: Renovar tokens .
+      tags:
+        - Auth
+      description: renueva access y refresh token.
+      responses:
+        "200":
+          description: OK.
+          headers:
+            Set-Cookie:
+              description: token_refresh
+              schema:
+                type: string
+            newaccesstoken:
+              description: new token Access
+              schema:
+                type: string
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  msg:
+                    type: string
+                    example: Refresh Tokens ok!
+        "500":
+          description: Server Error

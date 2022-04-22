@@ -1,0 +1,71 @@
+# version of docker-compose
+version: '3.7'
+# 'services' are equivalent to 'containers'
+services:
+  redis:
+    hostname: redis
+    image: 'redis:alpine'
+    restart: always
+    ports:
+      - '6379:6379'
+    command: redis-server --save 20 1 --loglevel warning --requirepass P4ssw0rdRedi8
+    volumes:
+      - cache:/data
+  redis-commander:
+    hostname: redis-commander
+    image: rediscommander/redis-commander:latest
+    restart: on-failure:5
+    environment:
+      - REDIS_HOST=${DOCKER_REDIS_HOST}
+      - REDIS_PASSWORD=${DOCKER_REDIS_PASSWORD}
+      - HTTP_USER=${DOCKER_HTTP_USER}
+      - HTTP_PASSWORD=${DOCKER_HTTP_PASSWORD}
+    ports:
+      - '8081:8081'
+    depends_on:
+      - redis
+  server1:
+    restart: on-failure:5
+    image: ${DOCKER_REGISTRY}/server1:latest
+    build:
+      context: ./backend
+    env_file: "./enviroment/backend/.env"
+    environment:
+      - NODE_ENV="${DOCKER_ENV_SERVER}"
+    ports:
+      - '3008:5000'
+    depends_on:
+      - redis
+    links:
+      - redis
+  server2:
+    restart: on-failure:5
+    image: ${DOCKER_REGISTRY}/server2:latest
+    build:
+      context: ./backend
+    env_file: "./enviroment/backend/.env"
+    environment:
+      - NODE_ENV=${DOCKER_ENV_SERVER}
+    ports:
+      - '3009:5000'
+    depends_on:
+      - redis
+    links:
+      - redis
+  frontend:
+    image: ${DOCKER_REGISTRY}/frontend:latest
+    build:
+      context: ./frontend
+    env_file: "./frontend/.env"
+    restart: always
+    environment:
+      - NODE_ENV=${DOCKER_ENV_FRONTEND}
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - server1
+      - server2
+volumes:
+  cache:
+    driver: local 
