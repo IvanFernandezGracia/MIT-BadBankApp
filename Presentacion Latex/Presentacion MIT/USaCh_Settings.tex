@@ -1,0 +1,289 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%  B E G I N   F I L E  %%%%%%%%%%%%%%%%%%%%%%%%%%%%!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%!
+
+
+%% USACH Corporative Colors
+
+% NEW COLORS 2016 // Primarios
+%\definecolor{OrangeUsach}{RGB}{234,118,0}
+%\definecolor{GrayUsach}{RGB}{177,177,177}
+%\definecolor{BlueUsach}{RGB}{0,47,108}
+
+% NEW COLORS 2016 // Secundarios
+\definecolor{OrangeUsach}{RGB}{163,31,52}
+\definecolor{GrayUsach}{RGB}{57,64,73}
+\definecolor{BlueUsach}{RGB}{138,139,140}
+
+
+%\definecolor{OrangeUsach}{RGB}{231,91,43}
+%\definecolor{BlueUsach}{RGB}{8,60,135}
+%\definecolor{GrayUsach}{RGB}{57,64,73}
+%\definecolor{GrayUsach}{RGB}{230,230,230}
+%\definecolor{GrayUsach}{gray}{0.4}
+
+
+%% ROBOTO FONT
+%\usepackage[sfdefault,thin]{roboto}
+\usepackage[sfdefault,light,condensed]{roboto}
+\usepackage[T1]{fontenc}
+
+\usefonttheme[onlymath]{serif}
+\renewcommand\mathfamilydefault{\rmdefault}
+
+
+\mode<presentation>{
+\usetheme{Rochester}
+\setbeamersize{text margin left=4mm,text margin right=4mm}
+\setbeamertemplate{navigation symbols}{}
+
+\usecolortheme[named=BlueUsach]{structure}
+\setbeamercovered{transparent}
+%%%
+\setbeamercolor{background canvas}{bg=BlueUsach, fg=white}
+\setbeamercolor{title}{fg=red}
+%
+%\setbeamercolor{secsubsec}{fg=white,bg=black}
+\setbeamercolor{normal text}{fg=white}
+%%
+\setbeamercolor{alerted text}{fg=OrangeUsach}
+%\setbeamercolor{figures}{fg=white,bg=black}
+%
+\
+
+\setbeamercolor{frametitle}{fg=GrayUsach}
+\setbeamercolor{framesubtitle}{fg=GrayUsach}
+%
+%\setbeamerfont{frametitle}{series=\bfseries}
+%\setbeamercolor{frametitle}{fg=white}
+
+%\setbeamerfont{framesubtitle}{size=\large}
+%\setbeamercolor{framesubtitle}{fg=OrangeUsach}
+%
+\setbeamercolor{section in toc shaded}{fg=GrayUsach}
+\setbeamercolor{section in toc}{fg=GrayUsach}
+%
+\setbeamercolor{item projected}{bg=OrangeUsach}
+\setbeamercolor*{enumerate item}{fg=GrayUsach}
+\setbeamercolor*{enumerate subitem}{fg=GrayUsach}
+\setbeamercolor*{enumerate subsubitem}{fg=GrayUsach}
+%
+\setbeamercolor*{itemize item}{fg=OrangeUsach}
+%
+\setbeamercolor*{description item}{fg=OrangeUsach}
+%
+%
+%% Setting for Black and White
+\setbeamercolor{section in head/foot}{bg=white, fg=black} % BW
+\setbeamercolor{background canvas}{bg=white, fg=black} % BW
+\setbeamercolor{normal text}{fg=black} % BW
+\setbeamercolor{title}{fg=white,bg=BlueUsach!70!white} % BW
+%\setbeamercolor{title}{fg=black,bg=NavyBlue!10!white}
+
+
+
+\setbeamercolor{section in toc}{fg=black} % BW
+\setbeamercolor{frametitle}{fg=black,bg=white} % BW
+\setbeamercolor{framesubtitle}{fg=GrayUsach}
+\setbeamercolor{section in toc shaded}{fg=black} % BW
+}
+
+
+%
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+
+
+
+
+\usepackage{multimedia}
+\usepackage{beamerseminar}
+
+\usepackage[absolute,overlay]{textpos}
+\usepackage{setspace}
+\usepackage{comment}
+\usepackage{moreverb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{amsmath,wasysym}
+\usepackage{amsfonts,bm}
+\usepackage[mathscr]{eucal}
+\usepackage{mathrsfs}
+%\usepackage{cclicenses}
+\usepackage[scale=1.2]{ccicons}
+\usepackage{multimedia}
+%\usepackage{media9}
+%\usepackage[framemethod=TikZ]{mdframed}
+%
+\usepackage{tikz,pgfplots}
+\usetikzlibrary{calc}
+\usetikzlibrary{intersections}
+\usetikzlibrary{arrows, patterns}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{positioning}
+\usepgflibrary{shapes.geometric}
+%\usetikzlibrary{trees}
+%\usetikzlibrary{3d}
+
+%\usetikzlibrary{shadows}
+
+%\usetikzlibrary{pgfplots.units}
+%\usepgfmodule{plot}
+%\pgfplotsset{width=8cm}
+%\pgfplotsset{compat=1.3,compat/path replacement=1.5.1}
+%
+%
+%\usetikzlibrary{external}
+%\tikzexternalize
+%\tikzset{external/export=true}
+%\tikzsetexternalprefix{../External/}
+%
+%\usepackage{beamerthemesplit}
+%\usepackage[showboxes]{textpos}
+%\usepackage{xmpmulti}
+%\usepackage{colortbl}
+%\usepackage{beamertexpower}
+\renewcommand{\bfdefault}{sbc}
+%
+%
+\newcommand{\Codigo}{}
+\newcommand{\Titulo}{}
+\newcommand{\SubTitulo}{}
+\newcommand{\Autor}{}
+\newcommand{\Correo}{}
+\newcommand{\Fecha}{}
+\newcommand{\Correooo}{}
+\newcommand{\LastUpdate}{}
+
+%------------------------------------------------------------------------------!
+% Settings for package: HyperRef **********************************************!
+%
+\hypersetup{
+pdfpagemode=FullScreen,
+baseurl={roberto.ortega@usach.cl},
+pdftitle={Presentación Programa de Magister},
+pdfauthor={Roberto Ortega},
+pdfcreator={Roberto Ortega},
+pdfproducer=PDFLaTeX,
+pdfsubject={Presentación Programa de Magister},
+pdfkeywords={}
+}
+%
+%
+%------------------------------------------------------------------------------!
+% New commands ****************************************************************!
+%
+\newcommand{\orange}{\textcolor{OrangeUsach}}
+\newcommand{\gray}{\textcolor{GrayUsach}}
+\newcommand{\blue}{\textcolor{BlueUsach}}
+
+\newcommand{\white}{\textcolor{white}}
+\newcommand{\green}{\textcolor{green}}
+\newcommand{\yellow}{\textcolor{yellow}}
+\newcommand{\red}{\textcolor{red}}
+\newcommand{\violet}{\textcolor{violet}}
+\newcommand{\cyan}{\textcolor{cyan}}
+\newcommand{\black}{\textcolor{black}}
+
+
+
+\newcommand{\TitleFrame}{}
+\newcommand{\SubTitleFrame}{}
+%
+%------------------------------------------------------------------------------!
+% Settings for beamer style ***************************************************!
+% 
+%% Formato de las secciones en la tabla de contenidos
+%
+%% Menu interactivo
+%% Al comienzo de cada \section
+%\AtBeginSection{%
+%\begin{frame}[t]
+%%\frametitle{Indice}
+%\tableofcontents[currentsection]
+%\end{frame}}
+%%% Al comienzo de cada \subsection
+%\AtBeginSubsection{%
+%\begin{frame}[t]
+%%\frametitle{Indice}
+%\tableofcontents[currentsection,currentsubsection]
+%\end{frame}}
+%
+%
+
+%% Formato pie de página
+\setbeamertemplate{footline}{%
+\begin{beamercolorbox}{section in head/foot}
+\vskip3pt%
+\makebox[0.90\textwidth][l]{%
+\hspace{2mm}\href{mailto:\Correo}{\sf \Correo}
+\hspace{1mm}\orange{\ccLogo\:\ccAttribution}
+\hspace{1mm}\gray{\Titulo}
+$\:|\:$\orange{\SubTitulo}
+}%
+%%\ccLogo$\quad$\ccAttribution$\:$\ccNonCommercial$\:$\ccNoDerivatives\\
+\makebox[0.10\textwidth][c]{%
+{\sf \insertframenumber\;of\;\inserttotalframenumber}}
+\vskip2pt
+\end{beamercolorbox}
+% 
+% LAST UPDATE
+\begin{tikzpicture}[remember picture,overlay]
+\node[gray,above right,rotate=90, scale=0.7, xshift=1mm] at (current page.south east)
+{\em\tiny \orange{$\circledast\:$}\LastUpdate\orange{$\:\circledast$}};
+\end{tikzpicture}%
+}
+
+
+\addtobeamertemplate{frametitle}{}{%
+\begin{tikzpicture}[remember picture,overlay]
+
+%% NUEVO LOGO
+\node[below left=1mm] at (current page.north east)
+{\includegraphics[height=1cm]{USACH2016_RIGHT_BW}};
+	
+%% ORANGE & BLUE RECTANGLES
+\draw[draw=BlueUsach,fill=BlueUsach] (current page.north east) rectangle ([yshift=-1.5mm]current page.north);
+\draw[draw=OrangeUsach,fill=OrangeUsach] (current page.north west) rectangle ([yshift=-1.5mm,xshift=3.5cm]current page.north);
+
+%\node[below left] at (current page.north east)
+%	{\includegraphics[height=1cm]{/Users/Roberto/Dropbox/Documents/USaCh/Corporativo/SetHorAi/UDS_HCOLOR}};
+
+%\node[below left] at (current page.north east)
+%	{\includegraphics[height=1cm]{/Users/Roberto/Dropbox/Documents/USaCh/Corporativo/SetHorAi/UDS_HBCO}};
+
+\end{tikzpicture}
+\vspace{-10mm}}
+%
+%% Incluye únicamente las etiquetadas como {label=ok}
+%\includeonlyframes{index,ok}
+%
+%
+%
+
+\newcommand{\Cover}{%
+\begin{tikzpicture}[remember picture,overlay, opacity=1]
+%
+\node[below,yshift=-10mm] at (current page.north)
+	{\includegraphics[width=7cm]{Logos/mit.png}};
+%
+
+%% ORANGE & BLUE RECTANGLES
+\draw[draw=OrangeUsach,fill=OrangeUsach] (current page.north west) rectangle ([yshift=-3mm]current page.north);
+\draw[draw=BlueUsach,fill=BlueUsach] (current page.north east) rectangle ([yshift=-3mm]current page.north);
+
+
+\node[below, align=center, yshift=-5cm] at (current page.north){%
+	\orange{\Large\bf \Codigo}\\
+	\gray{\large\bf \Titulo}\\
+	\orange{\SubTitulo}\\[5mm]
+	\gray{\scriptsize\Autor}\\
+	%\orange{{\scriptsize\Correo}}\\[3mm]
+	\gray{\scriptsize\Fecha}};
+%
+\end{tikzpicture}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% E N D   F I L E %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%!
